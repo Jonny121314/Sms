@@ -20,6 +20,10 @@ public class SmsController {
 	@Autowired
 	private SmsService smsService;
 	
+	/**
+	 * 手机发短信
+	 * @return
+	 */
 	@RequestMapping("/smscode")
 	public JsonResult<Object> smscode() {
 		Map<String, Object> params = ParameterUtils.getParameterMap();
