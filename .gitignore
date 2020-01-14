@@ -1,0 +1,16 @@
+.classpath
+.project
+/.settings/
+/target/
+/.svn/
+/.git/
+/.settings/
+/catalina.home_IS_UNDEFINED/
+
+/transaction-logs/
+.svn/*
+/src/test/
+/.idea/
+/.apt_generated/
+/.apt_generated_tests/
+.factorypath

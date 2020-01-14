@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhoujianming.www.mapper.SmsMapper">
+
+	<resultMap id="SmsInfo" type="com.zhoujianming.www.pojo.AliSMSInfo">
+		<result column="accessId" jdbcType="VARCHAR" property="accessId" />
+		<result column="accessKey" jdbcType="VARCHAR" property="accessKey" />
+		<result column="signName" jdbcType="VARCHAR" property="signName" />
+		<result column="codeTemplate" jdbcType="DOUBLE" property="codeTemplate" />
+		<result column="product" jdbcType="DOUBLE" property="product" />
+		<result column="domain" jdbcType="DOUBLE" property="domain" />
+	</resultMap>
+	
+	<select id="getSmsInfo" resultMap="SmsInfo">
+		SELECT * FROM sms limit 1
+	</select>
+
+</mapper>

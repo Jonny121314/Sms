@@ -1,0 +1,87 @@
+server:
+  port: 12091
+
+spring:
+  jta:
+    atomikos:
+      properties:
+        log-base-dir: ../logs/sms
+  jmx:
+    enabled: false
+  #切面启用
+  aop:
+    proxy-target-class: true
+    auto: true
+  redis:
+    database: 12
+    host: 127.0.0.1
+    port: 6379
+    password: 
+    timeout: 86400s
+    jedis:
+      pool:
+        # 最大活跃连接数，负数为不限制
+        max-active: -1
+        # 等待可用连接的最大时间，负数为不限制
+        max-wait: -1s
+        # 最大空闲连接数
+        max-idle: 8
+        # 最小空闲连接数
+        min-idle: 0
+  messages:
+    basename: i18n/messages
+  datasource:
+    common:
+      url: jdbc:mysql://127.0.0.1:33066/achievement_cloud_common?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true
+      username: HG
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      # 使用druid数据源
+      type: com.alibaba.druid.pool.DruidDataSource
+    template:
+      url: jdbc:mysql://127.0.0.1:33066/{dbName}?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true
+      username: HG
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      # 使用druid数据源
+      type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: false
+    maxOpenPreparedStatements: 20
+
+  # 文件上传大小设置
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 200MB
+      max-request-size: 200MB
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:com/zhoujianming/www/mapper/*.xml
+  type-aliases-package: com.zhoujianming.www.pojo
+
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  returnPageInfo: check
+
+loseEfficacy:
+    login: 86400
+
+logging:
+  level: 
+    xatu.zsl: info #不同目录下的日志可配置不同级别
